@@ -1,7 +1,7 @@
 ---
 title: 学习ARM汇编 - 寄存器（一）
 date: 2016-05-20 10:41:07
-tags: arm, assembly
+tags: [arm, assembly]
 ---
 
 工作需要，学习一下ARM汇编，以下内容主要来摘自于网络，主要翻译、摘取参考中的几个地址。
