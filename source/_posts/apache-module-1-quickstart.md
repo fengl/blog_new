@@ -1,7 +1,7 @@
 ---
 title: apache模块开发（一）：快速体验
 date: 2016-09-19 10:54:24
-tags: apache, httpd, module
+tags: [apache, httpd, module]
 ---
 
 # 开发环境
