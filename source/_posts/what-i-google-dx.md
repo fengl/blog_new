@@ -5,6 +5,8 @@ tags: google
 ---
 - Mac操作系统下dx报错
 
+<!-- more -->
+
 ```
 $:/dx --dex --output=Hello.dex Hello.class
 UNEXPECTED TOP-LEVEL EXCEPTION:

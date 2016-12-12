@@ -1,16 +1,26 @@
 ---
-title: apache模块开发（一）：快速体验
+title: Apache模块开发（一）：快速体验
 date: 2016-09-19 10:54:24
-tags: [apache, httpd, module]
+tags: [Apache, httpd, module]
 ---
+
+Apache模块开发的第一篇，我们用最快速简单的方式，感受Apache模块开发。
+
+<!-- more -->
+
+[Apache模块开发（一）：快速体验](http://alimap.org/2016/09/19/apache-module-1-quickstart/)
+
+[Apache模块开发（二）：拥抱C++](http://alimap.org/2016/09/20/apache-module-2-hellocpp/)
+
+[Apache模块开发（三）：聊聊模块化](http://alimap.org/2016/12/18/apache-module-3-saymodule/)
 
 # 开发环境
 
-操作系统：centos 6
+操作系统：CentOS 6
 
-apache版本：2.2.31
+Apache版本：2.2.31
 
-# 源码安装apache httpd
+# 源码安装Apache httpd
 
 - 下载源码
 - 解压缩
@@ -29,19 +39,40 @@ apache版本：2.2.31
 
 # 开发自己的模块
 
-apache允许用户开发自己的模块，以处理特殊的用户逻辑，细节我们后面再聊。
+Apache允许用户开发自己的模块，以处理特殊的用户逻辑，细节我们后面再聊。
 
 我们现在要做的就是开发一个模块，当通过http请求的时候，返回简单的“Hello”就可以了。
 
 ## 生成工程文件
 
-apache安装后，在安装目录的bin目录下有个文件叫apxs，用于创建、编译、安装apache的自定义模块。
+Apache安装后，在安装目录的bin目录下有个文件叫apxs，用于创建、编译、安装Apache的自定义模块。
 
 首先，用它来创建一个工程：
-1. 进入你的home目录：`cd` 
-2. 创建一个代码目录：`mkdir code`
-3. 进入code目录：`cd code`
-4. 生成工程：`/usr/local/apache2/bin/apxs -g -n hello`
+
+1. 进入你的home目录：
+
+	```
+	cd
+	```
+
+2. 创建一个代码目录：
+
+	```
+	mkdir code
+	```
+
+3. 进入code目录：
+
+	```
+	cd code
+	```
+
+4. 生成工程：
+
+	```
+	/usr/local/apache2/bin/apxs -g -n hello
+	```
+
 5. 进入hello目录，发现有三个文件，分别是：
 	- Makefile
 	- mod\_hello.c
@@ -59,20 +90,24 @@ apache安装后，在安装目录的bin目录下有个文件叫apxs，用于创�
 
 ## 配置模块
 
-apache如何知道我们新创建的模块呢？这就需要在配置文件中进行相关配置：
+Apache如何知道我们新创建的模块呢？这就需要在配置文件中进行相关配置：
 
 1. 打开文件`/usr/local/apache2/conf/httpd.conf`
 2. 在文件最后追回如下内容：
 
-		LoadModule hello_module modules/mod_hello.so
-		<Location /hello>
-			SetHandler hello
-		</Location>
+	```
+	LoadModule hello_module modules/mod_hello.so
+	<Location /hello>
+		SetHandler hello
+	</Location>
+	```
 
-3. 重新启动apache
-		
-		sudo /usr/local/apache2/bin/apachectl stop
-		sudo /usr/local/apache2/bin/apachectl start
+3. 重新启动Apache
+
+	```		
+	sudo /usr/local/apache2/bin/apachectl stop
+	sudo /usr/local/apache2/bin/apachectl start
+	```
 
 ## 验证成果
 
@@ -82,7 +117,7 @@ apache如何知道我们新创建的模块呢？这就需要在配置文件中�
 
 # 总结
 
-1. 我们通过源码安装了apache服务器。
+1. 我们通过源码安装了Apache服务器。
 2. 快速创建了一个hello模块。
 3. 加载hello模块，并对其进行了验证。
 
